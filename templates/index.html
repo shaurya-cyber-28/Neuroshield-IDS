@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeuroShield-IDS | Neural Gateway</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .gateway-wrapper {
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; padding: 20px;
+            background: radial-gradient(circle at 50% 0%, rgba(176, 38, 255, 0.15), var(--bg-void));
+            position: relative; overflow: hidden;
+        }
+        
+        .gateway-grid {
+            position: absolute; width: 200%; height: 200%;
+            background-image: 
+                linear-gradient(rgba(255, 0, 170, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 170, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            animation: gridFlow 15s linear infinite; z-index: 0;
+        }
+        @keyframes gridFlow { from { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); } to { transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px); } }
+
+        .holo-card {
+            background: rgba(15, 5, 25, 0.8);
+            border: 1px solid rgba(255, 0, 170, 0.3);
+            box-shadow: 0 0 30px rgba(176, 38, 255, 0.2), inset 0 0 20px rgba(255, 0, 170, 0.1);
+            border-radius: 4px; padding: 50px; max-width: 700px; width: 100%;
+            text-align: center; position: relative; z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+        .holo-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), var(--neon-cyan), transparent);
+        }
+
+        .sys-badge {
+            font-family: 'Share Tech Mono', monospace; font-size: 14px;
+            color: var(--neon-cyan); letter-spacing: 3px; margin-bottom: 20px;
+            display: inline-block; padding: 8px 20px;
+            border: 1px solid rgba(0, 240, 255, 0.3); background: rgba(0, 240, 255, 0.05);
+            text-transform: uppercase;
+        }
+
+        h1.cyber-title {
+            font-size: 48px; color: #fff; margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-pink);
+            letter-spacing: 2px; text-transform: uppercase; font-weight: 800;
+        }
+
+        .desc {
+            color: var(--text-muted); line-height: 1.8; margin-bottom: 40px;
+            font-size: 16px; text-shadow: 0 0 5px rgba(255,255,255,0.1);
+        }
+
+        .btn-launch {
+            display: inline-block; padding: 16px 40px;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+            color: #fff; text-decoration: none; font-family: 'Share Tech Mono', monospace;
+            font-size: 16px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            border: none; border-radius: 2px; cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 0, 170, 0.4); transition: 0.3s;
+        }
+        .btn-launch:hover {
+            box-shadow: 0 0 30px var(--neon-pink), 0 0 10px #fff;
+            transform: scale(1.02); background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+        }
+
+        .form-panel {
+            text-align: left; margin-top: 40px; padding-top: 30px;
+            border-top: 1px dashed rgba(176, 38, 255, 0.3);
+        }
+        .form-panel label { display: block; color: var(--neon-cyan); font-size: 12px; margin-bottom: 10px; font-family: 'Share Tech Mono'; letter-spacing: 1px; }
+        textarea {
+            width: 100%; height: 100px; background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(176, 38, 255, 0.4); color: var(--text-main);
+            padding: 15px; font-family: 'Share Tech Mono', monospace; font-size: 13px;
+            resize: none; transition: 0.3s;
+        }
+        textarea:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+        .btn-sub {
+            width: 100%; padding: 12px; margin-top: 10px;
+            background: transparent; border: 1px solid var(--neon-purple); color: var(--neon-purple);
+            font-family: 'Share Tech Mono'; letter-spacing: 1px; cursor: pointer; transition: 0.3s;
+        }
+        .btn-sub:hover { background: rgba(176, 38, 255, 0.1); box-shadow: 0 0 15px rgba(176, 38, 255, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="gateway-wrapper">
+        <div class="gateway-grid"></div>
+        <div class="holo-card">
+            <div class="sys-badge">SECURE NEURAL GATEWAY</div>
+            <h1 class="cyber-title">NeuroShield-IDS</h1>
+            <p class="desc">Enterprise-Class Neural Threat Detection. Utilizing deep-learning heuristic models for real-time anomaly isolation, attacker profiling, and automated SOAR execution.</p>
+            <a href="/dashboard" class="btn-launch">INITIALIZE SOC COMMAND</a>
+            
+            <form action="/analyze" method="POST" class="form-panel">
+                <label>>_ MANUAL_LOG_INJECTION_INTERFACE</label>
+                <textarea name="logs" placeholder="[ INPUT RAW SYSLOG DATA STREAM HERE ]"></textarea>
+                <button type="submit" class="btn-sub">EXECUTE NEURAL ANALYSIS</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

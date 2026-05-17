@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeuroShield | Intelligence Dossier</title>
+    <link rel="stylesheet" href="/static/report.css">
+</head>
+<body>
+    <div class="action-bar no-print">
+        <a href="/dashboard" class="btn-rep outline">ABORT / RETURN</a>
+        <button class="btn-rep primary" onclick="window.print()">EXPORT DOSSIER</button>
+    </div>
+
+    <div class="dossier">
+        <!-- TOP SEC BANNER -->
+        <div class="top-sec">
+            <span class="clearance">CLEARANCE: LEVEL 4 // CONFIDENTIAL</span>
+            <span class="tlp">TLP: RED</span>
+        </div>
+
+        <header class="dos-header">
+            <div class="dos-brand">
+                <div class="ns-logo">NS</div>
+                <div>
+                    <h1>THREAT INTELLIGENCE DOSSIER</h1>
+                    <h2>NEUROSHIELD AUTOMATED RESPONSE ENGINE</h2>
+                </div>
+            </div>
+            <div class="dos-meta">
+                <table>
+                    <tr><td>REPORT ID:</td><td class="val">NS-X99-OMEGA</td></tr>
+                    <tr><td>GENERATED:</td><td class="val">SYSTEM TIMESTAMP</td></tr>
+                    <tr><td>ENGINE:</td><td class="val">DEEP-HEURISTIC v4.2</td></tr>
+                </table>
+            </div>
+        </header>
+
+        <section class="dos-section">
+            <h3 class="sec-title">1.0 OPERATIONAL SUMMARY</h3>
+            <p class="body-txt">Neural network analysis of <strong>45,210</strong> intercepted packets revealed a coordinated multi-vector intrusion attempt. <strong>312</strong> discrete anomalies were flagged by the heuristic engine. <strong>12</strong> events bypassed standard threshold limits, triggering automated SOAR quarantine protocols to prevent catastrophic data exposure.</p>
+            
+            <div class="dos-kpi">
+                <div class="k-box"><span>PACKETS</span><strong>45,210</strong></div>
+                <div class="k-box"><span>FLAGS</span><strong class="t-purp">312</strong></div>
+                <div class="k-box"><span>CRITICAL</span><strong class="t-cyan">12</strong></div>
+                <div class="k-box"><span>REACTION</span><strong class="t-pink">0.8ms</strong></div>
+            </div>
+        </section>
+
+        <section class="dos-section">
+            <h3 class="sec-title">2.0 TACTICAL DISTRIBUTION (MITRE ATT&CK)</h3>
+            <table class="dos-table">
+                <thead><tr><th>TACTIC</th><th>ID</th><th>VECTOR</th><th>SEVERITY</th></tr></thead>
+                <tbody>
+                    <tr><td>Initial Access</td><td>T1190</td><td>SQL Payload Injection</td><td class="t-cyan">CRITICAL</td></tr>
+                    <tr><td>Impact</td><td>T1498</td><td>DDoS Volume Spike</td><td class="t-pink">HIGH</td></tr>
+                    <tr><td>Credential Access</td><td>T1110</td><td>SSH Dictionary Brute Force</td><td class="t-purp">MEDIUM</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="dos-section">
+            <h3 class="sec-title">3.0 PRIMARY ADVERSARY PROFILES</h3>
+            <div class="adv-grid">
+                <div class="adv-card border-cyan">
+                    <div class="adv-head">
+                        <span class="adv-ip">103.245.67.89</span>
+                        <span class="adv-tag bg-cyan">ISOLATED</span>
+                    </div>
+                    <div class="adv-body">
+                        <p><strong>VECTOR:</strong> SQLi Authentication Bypass</p>
+                        <p><strong>CONFIDENCE:</strong> 98.4%</p>
+                        <p><strong>BEHAVIOR:</strong> Targeted injection attempts on endpoint `/api/v1/auth`. Pattern matches known advanced persistent threat (APT) signatures. Firewall isolation executed successfully.</p>
+                    </div>
+                </div>
+                <div class="adv-card border-pink">
+                    <div class="adv-head">
+                        <span class="adv-ip">45.22.19.112</span>
+                        <span class="adv-tag bg-pink">WATCHLIST</span>
+                    </div>
+                    <div class="adv-body">
+                        <p><strong>VECTOR:</strong> SSH Brute Force</p>
+                        <p><strong>CONFIDENCE:</strong> 85.1%</p>
+                        <p><strong>BEHAVIOR:</strong> High-velocity login attempts using generic admin credentials. Rate-limiting applied dynamically by neural engine.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dos-section">
+            <h3 class="sec-title">4.0 STRATEGIC REMEDIATION</h3>
+            <ul class="rem-list">
+                <li><strong>MFA ENFORCEMENT:</strong> Immediate global enforcement of multi-factor authentication across all external-facing administrative nodes.</li>
+                <li><strong>PAYLOAD SANITIZATION:</strong> Review and harden regex validation rules on API input fields to neutralize T1190 exploits.</li>
+                <li><strong>NETWORK SEGMENTATION:</strong> Maintain current isolation of the affected subnet pending forensic deep-dive of memory dumps.</li>
+            </ul>
+        </section>
+
+        <div class="dos-footer">END OF REPORT // UNAUTHORIZED ACCESS IS STRICTLY PROHIBITED</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+# Add this next line ONLY if your .pkl or .csv files are larger than 100MB
+# *.pkl
+# *.csv

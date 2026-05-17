@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeuroShield-IDS | Master SOC</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-live-mode="True">
+
+<div class="scanline"></div>
+
+<div class="dashboard-grid">
+    <!-- HEADER -->
+    <header class="soc-header">
+        <div class="header-left">
+            <div class="status-indicator"><span class="blink"></span> SYSTEM ACTIVE</div>
+            <h1>NeuroShield-IDS <span class="version">v4.2.0-PRO</span></h1>
+        </div>
+        <div class="header-right">
+            <div class="nav-links">
+                <a href="/" class="nav-btn">DISCONNECT</a>
+                <a href="/dashboard" class="nav-btn active">LIVE TELEMETRY</a>
+                <a href="/report" class="nav-btn btn-highlight">GENERATE DOSSIER</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- KPI STRIP -->
+    <section class="kpi-strip">
+        <div class="kpi-card accent-purple">
+            <span class="kpi-title">TOTAL PACKETS ANALYZED</span>
+            <h2 id="totalLogs" class="kpi-value">0</h2>
+            <div class="kpi-sub">Baseline Deviation: <span style="color: var(--neon-cyan);">+2.4%</span></div>
+        </div>
+        <div class="kpi-card accent-pink">
+            <span class="kpi-title">INTERCEPTED THREATS</span>
+            <h2 id="threatsFound" class="kpi-value">0</h2>
+            <div class="kpi-sub">Engine Confidence: <span style="color: var(--neon-pink);">98.2%</span></div>
+        </div>
+        <div class="kpi-card accent-cyan glitch-container">
+            <span class="kpi-title">CRITICAL ANOMALIES</span>
+            <h2 id="criticalAlerts" class="kpi-value alert-text">0</h2>
+            <div class="kpi-sub">SOAR Actions Triggered: <span id="soarCount" style="color: var(--neon-cyan);">0</span></div>
+        </div>
+        <div class="kpi-card accent-purple">
+            <span class="kpi-title">PRIMARY THREAT ORIGIN</span>
+            <h3 id="topAttacker" class="kpi-value text-md">AWAITING...</h3>
+            <div class="kpi-sub">Status: <span style="color: var(--neon-pink);">MONITORING</span></div>
+        </div>
+    </section>
+
+    <!-- MIDDLE TIER: MATRIX & TIMELINE -->
+    <section class="mid-tier">
+        <div class="panel matrix-panel">
+            <div class="panel-head">
+                <h2>AI THREAT MATRIX</h2>
+                <span class="badge-status">NEURAL MAPPING [ONLINE]</span>
+            </div>
+            <div id="threatMatrix"></div>
+        </div>
+
+        <div class="panel chart-panel">
+            <div class="panel-head">
+                <h2>ATTACK VELOCITY TELEMETRY</h2>
+            </div>
+            <div class="canvas-container">
+                <canvas id="timelineChart"></canvas>
+            </div>
+            
+            <div class="panel-head mt-4">
+                <h2>VECTOR DISTRIBUTION</h2>
+            </div>
+            <div id="distributionChart" class="dist-chart"></div>
+        </div>
+    </section>
+
+    <!-- BOTTOM TIER: TERMINAL & EVENTS -->
+    <section class="bot-tier">
+        <div class="panel">
+            <div class="panel-head">
+                <h2>LIVE INCIDENT STREAM</h2>
+                <span class="badge-status" style="color: var(--neon-cyan); border-color: var(--neon-cyan);">TAIL -F /VAR/LOG/NS.LOG</span>
+            </div>
+            <div class="terminal-box" id="terminalFeed"></div>
+        </div>
+
+        <div class="panel col-span-2">
+            <div class="panel-head">
+                <h2>DETECTION EVENTS & ACTIVE RESPONSE ENGINE</h2>
+            </div>
+            <div class="table-wrap">
+                <table class="cyber-table">
+                    <thead>
+                        <tr>
+                            <th>ORIGIN IP</th>
+                            <th>CLASSIFICATION</th>
+                            <th>RISK TIER</th>
+                            <th>NEURAL CONF.</th>
+                            <th>INTELLIGENCE</th>
+                            <th>SOAR PROTOCOL</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- XAI OVERLAY (Hologram style) -->
+<div id="xaiPanel" class="xai-overlay hidden">
+    <div class="xai-window">
+        <div class="xai-top">
+            <h2>DEEP LOGIC INFERENCE</h2>
+            <button onclick="closeXAI()" class="btn-close">[X]</button>
+        </div>
+        <div class="xai-core">
+            <div class="xai-target">TARGET ID: <span id="xaiIp"></span></div>
+            <div class="xai-class">VECTOR: <span id="xaiThreat"></span></div>
+            
+            <div class="xai-metrics">
+                <div class="metric-row">
+                    <span>PAYLOAD ANOMALY SCORE</span>
+                    <div class="track"><div id="xaiBar1" class="fill fill-pink" style="width:0%"></div></div>
+                </div>
+                <div class="metric-row">
+                    <span>SIGNATURE MATCH DEPTH</span>
+                    <div class="track"><div id="xaiBar2" class="fill fill-purple" style="width:0%"></div></div>
+                </div>
+                <div class="metric-row">
+                    <span>LATERAL MOVEMENT PROBABILITY</span>
+                    <div class="track"><div id="xaiBar3" class="fill fill-cyan" style="width:0%"></div></div>
+                </div>
+            </div>
+            
+            <div class="xai-eval">
+                <span>SYSTEM EVALUATION:</span>
+                <p id="xaiConclusion">Running inference model...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
